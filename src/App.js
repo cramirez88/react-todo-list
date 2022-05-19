@@ -28,6 +28,8 @@ function App() {
     setTodos(filtTodos)
     
   }
+
+  
   
 
   return (
@@ -42,6 +44,9 @@ function App() {
           return (
           
             <div key={index}>
+              {/* Implement checkbox */}
+              {/* When checkbox is clicked, line through todo */}
+              <input type='checkbox'></input>
               <p style={{display:'inline-block'}}>{todo}</p>
               <button style={{marginLeft: '5px'}} onClick={()=>handleDelete(index)}>Delete</button>
             </div>
