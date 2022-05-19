@@ -18,6 +18,17 @@ function App() {
     setTodo('')
 
   }
+// When i click the delete button, I want to clear the todo item I clicked on and make sure it is deleted from the state array.
+// Use the filter method to return a new array that passes the test implemented by function
+  const handleDelete = idx => {
+    const filtTodos = todos.filter((todo,i) => 
+    // i represents the current index in the array. idx refers to the index of the todo provided by the map function
+       i !== idx
+    )
+    setTodos(filtTodos)
+    
+  }
+  
 
   return (
     <div>
@@ -25,17 +36,25 @@ function App() {
       <input type="text" onChange={e => {setTodo(e.target.value)}} value={todo}></input>
       {/* When the user adds a todo (by clicking on button), the todo will get saved to the array, added to screen, and clear input field */}
       <button onClick={handleClickTodo}>Add Todo</button>
+      {/* // I want to go through the array of my todos and display them on the screen */}
       {
         todos.map((todo, index) => {
           return (
-            <div key={index}>{todo}</div>
+          
+            <div key={index}>
+              <p style={{display:'inline-block'}}>{todo}</p>
+              <button style={{marginLeft: '5px'}} onClick={()=>handleDelete(index)}>Delete</button>
+            </div>
+            
+           
+           
           )
         })
       }
     </div>
       
   )
-  // I want to go through the array of my todos and display them on the screen
+ 
 
   
 
