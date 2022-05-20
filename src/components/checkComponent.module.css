@@ -1,0 +1,3 @@
+.check:checked + p {
+  text-decoration: line-through;
+}
