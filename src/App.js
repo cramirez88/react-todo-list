@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import styles from './components/checkComponent.module.css'
+
 
 function App() {
   // We will need state to keep track of changes in input and list of todos 
@@ -6,6 +8,19 @@ function App() {
   const [todo, setTodo] = useState('') 
   // second state takes care of the list that will get rendered everytime a new todo is added. Stored in an array because there will be more than one
   const [todos, setTodos] = useState([])
+
+  // set another state to keep track of checkbox status
+  const [checked, setChecked] = useState(false)
+  const handleCheck = () => {setChecked(!checked)}
+  
+
+  if (checked === true) {
+
+    console.log('checked')
+  } else {
+    console.log('not checked')
+  }
+  
 
   const handleClickTodo = e => {
     // To avoid adding empty strings into array:
@@ -46,7 +61,7 @@ function App() {
             <div key={index}>
               {/* Implement checkbox */}
               {/* When checkbox is clicked, line through todo */}
-              <input type='checkbox'></input>
+              <input type='checkbox' onChange={handleCheck} checked={checked}></input>
               <p style={{display:'inline-block'}}>{todo}</p>
               <button style={{marginLeft: '5px'}} onClick={()=>handleDelete(index)}>Delete</button>
             </div>
