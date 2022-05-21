@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import styles from './components/checkComponent.module.css'
-
+import styles from './components/MyApp.module.css'
 
 function App() {
   // We will need state to keep track of changes in input and list of todos 
@@ -9,17 +8,24 @@ function App() {
   // second state takes care of the list that will get rendered everytime a new todo is added. Stored in an array because there will be more than one
   const [todos, setTodos] = useState([])
 
-  // set another state to keep track of checkbox status
-  const [checked, setChecked] = useState(false)
-  const handleCheck = () => {setChecked(!checked)}
-  
-
-  if (checked === true) {
-
-    console.log('checked')
-  } else {
-    console.log('not checked')
+  const isTodoComplete = {
+    todo: todo,
+    completed: false
   }
+
+  // set another state to keep track of checkbox status
+  // const [checked, setChecked] = useState(false)
+  const handleCheck = (idx) => {
+    const isCompletedOrNot = todos.filter((todo, i) => {
+      if (idx === i) {
+        todo.completed = !todo.completed
+      }
+      return todo
+  });
+
+  setTodos(isCompletedOrNot)
+}
+  
   
 
   const handleClickTodo = e => {
@@ -28,7 +34,7 @@ function App() {
       return
     }
     e.preventDefault()
-    setTodos([...todos, todo])
+    setTodos([...todos, isTodoComplete])
     // Calling setTodo will clear the state, but due to the one way flow of data, it will only clear the state. We have to connect the value of the input to the state
     setTodo('')
 
@@ -56,13 +62,14 @@ function App() {
       {/* // I want to go through the array of my todos and display them on the screen */}
       {
         todos.map((todo, index) => {
+          // If the checkbox is checked, i want to line through the todo item (p tag)
           return (
           
             <div key={index}>
               {/* Implement checkbox */}
               {/* When checkbox is clicked, line through todo */}
-              <input type='checkbox' onChange={handleCheck} checked={checked}></input>
-              <p style={{display:'inline-block'}}>{todo}</p>
+              <input type='checkbox' onChange={()=>handleCheck(index)} checked={isTodoComplete.completed}></input>
+              <p  style={{display:'inline-block'}}>{todo.todo}</p>
               <button style={{marginLeft: '5px'}} onClick={()=>handleDelete(index)}>Delete</button>
             </div>
             
