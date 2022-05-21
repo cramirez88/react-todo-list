@@ -13,8 +13,7 @@ function App() {
     completed: false
   }
 
-  // set another state to keep track of checkbox status
-  // const [checked, setChecked] = useState(false)
+
   const handleCheck = (idx) => {
     const isCompletedOrNot = todos.filter((todo, i) => {
       if (idx === i) {
@@ -63,12 +62,13 @@ function App() {
       {
         todos.map((todo, index) => {
           // If the checkbox is checked, i want to line through the todo item (p tag)
+          
           return (
           
             <div key={index}>
               {/* Implement checkbox */}
               {/* When checkbox is clicked, line through todo */}
-              <input type='checkbox' onChange={()=>handleCheck(index)} checked={isTodoComplete.completed}></input>
+              <input type='checkbox' onChange={()=>handleCheck(index)} checked={todo.completed}></input>
               <p  style={{display:'inline-block'}}>{todo.todo}</p>
               <button style={{marginLeft: '5px'}} onClick={()=>handleDelete(index)}>Delete</button>
             </div>
