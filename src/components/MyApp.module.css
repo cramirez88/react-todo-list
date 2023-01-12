@@ -1,3 +1,0 @@
-input[type='checkbox']:checked + p{
-  text-decoration: line-through;
-}
