@@ -1,4 +1,5 @@
 import React from 'react'
+import  '../App.css'
 
 export default function Todos(props) {
   const {todos, setTodos} = props
@@ -18,6 +19,15 @@ export default function Todos(props) {
       todos.filter(todo => todo.id !== id)
     )
   }
+
+  const completedTask = (check) => {
+    if(check === true){
+      return 'complete'
+    }else {
+      return 'notCompleted'
+    }
+  }
+  
   return (
     <div>
       <h1>My todos: </h1>
@@ -25,12 +35,13 @@ export default function Todos(props) {
         todos.map((todo, index) => {
           return(
             
-            <div key={index}>
-            <li style={{display: 'inline'}} >{todo.task}</li>
-            <input  style={{display: 'inline'}} type={'checkbox'} onClick={() => toggleComplete(todo)}></input>
-            <button style={{display: 'inline'}} onClick={e => deleteTodo(todo.id)} >Delete</button>
+            <div className={completedTask(todo.completed)} key={index}> hello
+            <li  className={completedTask(todo.completed)} style={{display: 'inline-block'}} >{todo.task}</li>
+            <input  className={completedTask(todo.completed)} style={{display: 'inline-block' }} type={'checkbox'} onClick={() => toggleComplete(todo)}></input>
+            <button  className={completedTask(todo.completed)} style={{display: 'inline-block'}} onClick={e => deleteTodo(todo.id)} >Delete</button>
             </div>
             
+           
             
            
           )
