@@ -5,7 +5,11 @@ export default function Form(props) {
   const {todos, setTodos} = props
   const formHandler = (e) => {
     e.preventDefault()
-    setTodos([...todos, todo])
+    setTodos([...todos, {
+      task: todo,
+      completed: false,
+      id: Math.floor(Math.random() * 1000)
+    }])
     setTodo('')
     
   }
