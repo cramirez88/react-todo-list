@@ -12,3 +12,11 @@
   margin-top: 5px;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
+.notCompleted {
+  text-decoration: none;
+}
+

@@ -12,16 +12,32 @@ export default function Todos(props) {
    }
    setTodos([...todos])
   }
+
+  const lineThroughTodos = (todo) => {
+    if(todo.completed === true){
+      return 'completed'
+    }else {
+      return 'notCompleted'
+    }
+  }
+
+  const deleteTodos = (id) => {
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id !== id
+      })
+    )
+  }
   return (
     <div>
       {
         todos.map((todo, index) => {
           return (
-            <div key={index} className='parentDiv'>
-              <div className='contentDiv'>   
-              <li >{todo.todo}</li>
+            <div key={index} className='parentDiv' >
+              <div className='contentDiv '>   
+              <li className={lineThroughTodos(todo)}>{todo.todo}</li>
                <input type='checkbox' onChange={() => toggleComplete(todo)}></input>
-               <button>Delete</button>
+               <button onClick={() => deleteTodos(todo.id)}>Delete</button>
               </div>
             </div>
            

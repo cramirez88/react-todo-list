@@ -9,7 +9,8 @@ export default function Form(props) {
     e.preventDefault()
     setTodos([...todos, {
       todo: todo,
-      completed: false
+      completed: false,
+      id: Math.floor((Math.random() * 1000))
     }])
     setTodo('')
   }
