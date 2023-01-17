@@ -7,7 +7,10 @@ export default function Form(props) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    setTodos([...todos, todo])
+    setTodos([...todos, {
+      todo: todo,
+      completed: false
+    }])
     setTodo('')
   }
   return (
