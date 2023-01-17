@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label{
+  margin-right: 10px;;
+}
+
+button{
+  background-color: navy;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
